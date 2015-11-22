@@ -1,7 +1,7 @@
 import React from 'react-native';
 import Profile from './Profile';
 import Repositories from './Repositories';
-import api from './../../Utils/api.js';
+import api from './../Utils/api.js';
 
 let {
   Text,

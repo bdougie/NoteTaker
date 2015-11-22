@@ -1,6 +1,6 @@
 import React from 'react-native';
 import Dashboard from './Dashboard';
-import api from './../../Utils/api.js';
+import api from './../Utils/api.js';
 
 let {
   View,
