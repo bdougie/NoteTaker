@@ -1,4 +1,5 @@
 import React from 'react-native';
+import api from './../../Utils/api.js';
 
 let {
   View,
@@ -73,11 +74,28 @@ export default class Main extends React.Component{
     this.setState({
       isLoading: true
     });
-    // update our indicatorIOS spinner
-    console.log('SUBMIT', this.state.username);
-    //fetch github data
-    //reroute to the next passing that github information
-  }
+
+  api.getBio(this.state.username)
+    .then((res) => {
+      if (res.message === 'Not Found') {
+        this.setState({
+          error: 'User not found',
+          isLoading: false
+        })
+      } else {
+        this.props.navigator.push({
+         title: res.name || "select an Option",
+          component: Dashboard,
+          passProps: {userInfor: res}
+        });
+        this.setState({
+          isLoading: false,
+          error: false,
+          username: ''
+        })
+      }
+    });
+}
 
   render() {
     return(
