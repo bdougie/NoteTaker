@@ -1,4 +1,5 @@
 import React from 'react-native';
+import Dashboard from './Dashboard';
 import api from './../../Utils/api.js';
 
 let {
@@ -86,7 +87,7 @@ export default class Main extends React.Component{
         this.props.navigator.push({
          title: res.name || "select an Option",
           component: Dashboard,
-          passProps: {userInfor: res}
+          passProps: {userInfo: res}
         });
         this.setState({
           isLoading: false,
