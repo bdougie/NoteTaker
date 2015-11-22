@@ -1,6 +1,7 @@
 import React from 'react-native';
 import Badge from './Badge';
 import Separator from './Helpers/Separator';
+import Web_View from './Helpers/WebView'
 
 let {
   ScrollView,
@@ -37,8 +38,12 @@ let styles = StyleSheet.create({
 
 export default class Repositories extends React.Component{
   openPage(url){
-    console.log('the url is', url);
-    }
+    this.props.navigator.push({
+      component: Web_View,
+      title: 'Web View',
+      passProps: {url}
+    });
+  }
   render(){
     let repos = this.props.repos;
     let list = repos.map((item, index) => {
