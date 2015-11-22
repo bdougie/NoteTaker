@@ -99,6 +99,9 @@ export default class Main extends React.Component{
 }
 
   render() {
+    let showErr = (
+      this.state.error ? <Text> {this.state.error} </Text> : <View></View>
+    );
     return(
       <View style={styles.mainContainer}>
       <Text style={styles.title}> Search for Github User</Text>
@@ -112,8 +115,12 @@ export default class Main extends React.Component{
             underlayColor="white">
             <Text style={styles.buttonText}> SEARCH </Text>
           </TouchableHighlight>
+          <ActivityIndicatorIOS
+            animating={this.state.isLoading}
+            color='#111'
+            size='large'></ActivityIndicatorIOS>
+          {showErr}
       </View>
     )
   }
 };
-
